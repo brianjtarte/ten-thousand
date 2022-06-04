@@ -11,8 +11,8 @@
    1. GameLogic
       1. Methods:
          1. roll_dice (static)
-            1. Input of an int between 1-6 (number of dice)
-            2. Output is tuple with random values between 1-6 (value of dice)
+         - [x] 1. Input of an int between 1-6 (number of dice)
+         - [x] 2. Output is tuple with random values between 1-6 (value of dice)
          2. calculate_score (static)
             1. Input is a tuple of integers that represent a dice roll
             2. Output is an integer representing the roll's score according to the rules
