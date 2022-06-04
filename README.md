@@ -1,6 +1,9 @@
 # Lab-06 Ten-Thousand
 
-## Contributors: Marni, Anthony, Brendon, Brian
+## Authors: Marni, Anthony, Brendon, Brian
+
+### Links & Resources:
+
 
 ### Feature Tasks/Requirements:
 1. Focus on scoring,dice rolling, banking of points (Game logic)
@@ -22,4 +25,9 @@
             2. Output should be the amount of points added to total from shelf
          3. clear_shelf (instance)
             1. Should remove all unbanked points
-4. Define class functions
+### Initialize/Run Application:
+
+### Tests
+ - Running tests:
+ - Tests of note:
+ - Tests not completed/skipped:
