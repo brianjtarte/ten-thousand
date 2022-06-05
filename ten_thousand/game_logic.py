@@ -56,25 +56,25 @@ class GameLogic:
             if count[num][0] == 6 and count[num][1] >= 3:
                 score += 600 * (count[num][1] - 2)
             # three pair
-            for num in range(0,len(count)):
+            if len(count) == 3:
                 if count[0][1] ==2 and count[1][1] ==2 and count[2][1] ==2 :
                
-                        score =1500
+                    score = 1500
              
 
             # straight
-            for num in range(0,len(count)):
-                if count[0][1] ==1 and count[1][1] ==1 and count[2][1] ==1 and count[3][1] ==1 and count[4][1] ==1 and count[5][1] ==1:
-                    score =1500
+            if len(count) == 6:
+                #if count[0][1] == 1 and count[1][1] == 1 and count[2][1] == 1 and count[3][1] == 1 and count[4][1] == 1 and count[5][1] ==1:
+                score = 1500
 
 
 
 
             # 2 triples
-            for num in range(0,len(count)):
+            if len(count) == 2:
                 if count[0][1] ==3 and count[1][1] ==3 :
                     
-                        score =1200
+                    score = 1200
        
         return score
         
