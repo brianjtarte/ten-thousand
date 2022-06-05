@@ -10,27 +10,55 @@ class GameLogic:
 
     @staticmethod
     def roll_dice(num_dice):
-        # list = []
-        # for num in range(1,num_dice +1):
-        #     die_value = random.randint(1, 6)
-        #     list.append(die_value)
-        # return list
         roll = tuple(random.randint(1,6) for die in range(0,num_dice))
+        
         return roll
 
 
-
+    
     @staticmethod 
     def calculate_score(roll):
-        count = Counter(roll)
-        return count
-        # score = 0
-        # if roll is None:
-        #     roll = [0]
-        
-        
+        score = 0
+        count = Counter(roll).most_common()
+        print(count)
 
+        num = len(count)
+
+        for num in range(0,len(count)):
+            print (count[num][0], count[num][1])
+            #  ones
+            if count[num][0] == 1 and count[num][1] <= 2:
+                score += 100 * count[num][1]
+                print(score)
+
+            if count[num][0] == 1 and count[num][1] > 2:
+                score += 1000 * (count[num][1] - 2)
+                print(score)
+            # twos
+            if count[num][0] == 1 and count[num][1] >= 3:
+                score += 200 * (count[num][1] - 2)
+            # threes
+            if count[num][0] == 1 and count[num][1] >= 3:
+                score += 300 * (count[num][1] - 2)
+            # fours
+            if count[num][0] == 1 and count[num][1] >= 3:
+                score += 400 * (count[num][1] - 2)
+            # fives
+            if count[num][0] == 1 and count[num][1] <= 2:
+                score += 50 * (count[num][1] - 2)
+                print(score)
+
+            if count[num][0] == 1 and count[num][1] > 2:
+                score += 500 * (count[num][1] - 2)
+                print(score)
+            # sixes
+            if count[num][0] == 1 and count[num][1] >= 3:
+                score += 600 * (count[num][1] - 2)
+            # three pair
+            # streight
+            # 2 triples
+
+        return count, score
+        
 if __name__ == '__main__':
-    # GameLogic.roll_dice(2)
-    # print(GameLogic.roll_dice(2))
-    print(GameLogic.calculate_score(GameLogic.roll_dice(2)))
+    print(GameLogic.calculate_score(GameLogic.roll_dice(5)))
