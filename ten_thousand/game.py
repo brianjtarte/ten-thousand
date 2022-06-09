@@ -23,7 +23,7 @@ class Game:
         print("(y)es to play or (n)o to decline")
         play_game = input("> ")
         if play_game == "n":
-            self.quit_game(play_game,self.banker.bank, self.round)
+            self.quit_game(play_game,self.banker.balance, self.round)
         elif play_game == "y":
             self.start_game()
 
@@ -53,12 +53,14 @@ class Game:
         """
         # initialize an empty string
         print(f'Rolling {num_dice} dice...')
+        # change the tring to the concatenation string with the for loop
         string = '*** 4 4 5 2 3 1 ***'
         print(string)
         print("Enter dice to keep, or (q)uit:")
+        play_game = input("> ")
+        self.quit_game(play_game,self.banker.balance, self.round)
+
         
-
-
         # for dice in self.roller(num_dice):
         #     string = + string + ' ' + str(dice)
         
