@@ -1,4 +1,4 @@
-# Lab-06 Ten-Thousand
+# Lab-07 Ten-Thousand II
 
 ## Authors: Marni, Anthony H., Brendon, Brian
 
@@ -33,7 +33,7 @@
    1. GameLogic
       1. Methods:
          1. roll_dice (static)
-            - [] 1. should simulate rolling between 1 and 6 dice
+            - [x] 1. should simulate rolling between 1 and 6 dice
             - [] 2. Should allow user to set aside dice each roll
          2. calculate_score (static)
             - [] 1. Application Should allow banking of current score or allow rolling again
@@ -45,14 +45,13 @@
 
 ### Initialize/Run Application:
 
-6/7/2022
+6/9/2022
 - Not Applicable, no full game implementation, only dice rolling. 
 
 ### Tests
  - Running tests: 
-   - pytest tests/test_calculate_score.py
-   - pytest tests/test_banker.py
-   - pytest tests/test_roll_dice.py
+   - pytest test/version_1 (this test all version one tests from the first part of the lab)
+   - pytest test/version_2 (this tests all verion two tests from the second part of the lab)
  
  - Tests of note: N/A
- - Tests not completed/skipped: N/A
+ - Tests not completed/skipped: We only have the first two tests passing at the moment, and are struggling to bank points, which is causing the subsequent tests to fail.
