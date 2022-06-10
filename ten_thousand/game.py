@@ -1,4 +1,4 @@
-from lib2to3.pgen2.token import GREATER, LESS
+
 from ten_thousand.game_logic import GameLogic
 from ten_thousand.game_logic import Banker
 
@@ -18,7 +18,7 @@ class Game:
             roller (method/function, optional): the function or game logic that handles the dice rolling feature. Defaults to None.
         """
         num_dice = 6
-        self.roller = GameLogic.roll_dice
+        self.roller = roller or GameLogic.roll_dice
         print("Welcome to Ten Thousand")
         print("(y)es to play or (n)o to decline")
         play_game = input("> ")
@@ -54,15 +54,16 @@ class Game:
         # initialize an empty string
         print(f'Rolling {num_dice} dice...')
         # change the tring to the concatenation string with the for loop
-        string = '*** 4 4 5 2 3 1 ***'
-        print(string)
+        # string = '*** 4 4 5 2 3 1 ***'
+        list = ' '.join(str(dice) for dice in self.roller(num_dice))
+        print(f"*** {list} ***")
         print("Enter dice to keep, or (q)uit:")
         play_game = input("> ")
         self.quit_game(play_game,self.banker.balance, self.round)
-
+        
         
         # for dice in self.roller(num_dice):
-        #     string = + string + ' ' + str(dice)
+        #     string = string + ' ' + str(dice)
         
 
 
