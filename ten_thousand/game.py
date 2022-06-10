@@ -1,6 +1,6 @@
-
 from ten_thousand.game_logic import GameLogic
 from ten_thousand.game_logic import Banker
+
 
 class Game:
     """hadles all the game logic, starts a round, rolls dice, ends a round, banks score, calculates shelf points
@@ -23,12 +23,11 @@ class Game:
         print("(y)es to play or (n)o to decline")
         play_game = input("> ")
         if play_game == "n":
-            self.quit_game(play_game,self.banker.balance, self.round)
+            self.quit_game(play_game, self.banker.balance, self.round)
         elif play_game == "y":
             self.start_game()
 
-    
-    def quit_game(self,quit_type, points, round ):
+    def quit_game(self, quit_type, points, dice):
         """Quit the game method
         """
         if quit_type == 'n':
@@ -40,7 +39,7 @@ class Game:
         """start the game with the current starting round and dice
         """
         num_dice = 6
-        self.round = self.round +1
+        self.round = self.round + 1
         print(f'Starting round {self.round}')
         self.start_round(num_dice)
 
@@ -58,68 +57,17 @@ class Game:
         list = ' '.join(str(dice) for dice in self.roller(num_dice))
         print(f"*** {list} ***")
         print("Enter dice to keep, or (q)uit:")
-        play_game = input("> ")
-        self.quit_game(play_game,self.banker.balance, self.round)
-        
-        
-        # for dice in self.roller(num_dice):
-        #     string = string + ' ' + str(dice)
-        
-
-
-        
+        roll_dice = input("> ")
+        if roll_dice == "q":
+            self.quit_game(roll_dice, self.banker.balance, self.round)
+        else:
+            self.end_round()
 
 
 
-        
-
-    # def play(self, roller=None):
-    #     self.roller = roller or GameLogic.roll_dice
-    #     print("Welcome to Ten Thousand")
-    #     print("(y)es to play or (n)o to decline")
-    #     play_game = input("> ")
-    #     if play_game == "n":
-    #         print("OK. Maybe another time")
-        # elif play_game == "y":
-        #     self.start_round(self.round, self.roller)
-
-    # def start_round(self, round, roller):
-    #     round += 1
-    #     dice = 6
-    #     print(f'Starting round {round}')
-    #     while True:
-    #         print(f'Rolling {dice} dice...')
-            
-    #         print(roller(GameLogic.roll_dice(dice)))
-    #         return
-
-
-        #     print("*** 4 4 5 2 3 1 ***")
-        #     print("Enter dice to keep, or (q)uit:")
-        #     quit_game = input("> ")
-        #     if quit_game == "q":
-        #         print("Thanks for playing. You earned 0 points")
-        #         return
-        #     elif quit_game != "q":
-        #         print("Starting round 1")
-        #         print("Rolling 6 dice...")
-        #         print("*** 4 2 6 4 6 5 ***")
-        #         print("Enter dice to keep, or (q)uit:")
-        #         keep_dice = input("> ")
-        #         if keep_dice != "q":
-        #             print("You have 50 unbanked points and 5 dice remaining")
-        #             print("(r)oll again, (b)ank your points or (q)uit:")
-        #             bank_or_roll = input("> ")
-        #         if bank_or_roll == "b":
-        #             print("You banked 50 points in round 1")
-        #             print("Total score is 50 points")
-        #             print("Starting round 2")
-        #             print("Rolling 6 dice...")
-        #             print("*** 6 4 5 2 3 1 ***")
-        #             print("Enter dice to keep, or (q)uit:")
-        #             quit_round = input("> ")
-        #             if quit_round == "q":
-        #                 print("Thanks for playing. You earned 50 points")
+    def end_round(self):
+        self.banker.shelf(50)
+        print(f"You banked {self.banker.shelved} points in round {self.round}")
 
 
 if __name__ == '__main__':
