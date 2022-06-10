@@ -23,4 +23,6 @@ class Banker:
 
 
 if __name__ == '__main__':
-    pass
+    banker=Banker()
+    banker.shelf(50)
+    print(banker.shelved)
