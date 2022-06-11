@@ -1,5 +1,5 @@
 from ten_thousand.game_logic import GameLogic
-from ten_thousand.game_logic import Banker
+from ten_thousand.banker import Banker
 
 
 class Game:
@@ -16,6 +16,7 @@ class Game:
 
         Args:
             roller (method/function, optional): the function or game logic that handles the dice rolling feature. Defaults to None.
+            amt
         """
         num_dice = 6
         self.roller = roller or GameLogic.roll_dice
@@ -49,6 +50,7 @@ class Game:
         Args:
             num_dice (int): number of dice
             roller (function/method): the logic to roll the dice from an imported method
+            amt
         """
         # initialize an empty string
         print(f'Rolling {num_dice} dice...')
@@ -60,14 +62,22 @@ class Game:
         roll_dice = input("> ")
         if roll_dice == "q":
             self.quit_game(roll_dice, self.banker.balance, self.round)
+        if roll_dice is int:
+            self.shelf_round(num_dice)
         else:
             self.end_round()
 
 
+    def shelf_round(self,num_dice):
+        print(f"You have {self.banker.shelved} unbanked points and {num_dice} dice remaining")
+
+
+
+
 
     def end_round(self):
-        self.banker.shelf(50)
-        print(f"You banked {self.banker.shelved} points in round {self.round}")
+        self.banker.bank()
+        print(f"You banked {self.banker.balance} points in round {self.round}")
 
 
 if __name__ == '__main__':
