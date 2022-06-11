@@ -72,20 +72,7 @@ class GameLogic:
         return score
 
 
-class Banker:
 
-    def __init__(self, balance=0, shelved=0):
-        self.balance = balance
-        self.shelved = shelved
-
-    def bank(self):
-        pass
-
-    def shelf(self, amt):
-        pass
-
-    def clear_shelf(self, shelved):
-        shelved
 
 
 if __name__ == '__main__':
