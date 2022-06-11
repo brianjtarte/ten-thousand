@@ -1,8 +1,9 @@
 from ten_thousand.game_logic import GameLogic
 from ten_thousand.banker import Banker
 
+
 class Game:
-    """hadles all the game logic, starts a round, rolls dice, ends a round, banks score, calculates shelf points
+    """handles all the game logic, starts a round, rolls dice, ends a round, banks score, calculates shelf points
     """
 
     def __init__(self, max_rounds=10):
@@ -17,15 +18,16 @@ class Game:
             roller (method/function, optional): the function or game logic that handles the dice rolling feature. Defaults to None.
             amt
         """
-        num_dice = 6
-        self.roller = roller or GameLogic.roll_dice
+        print(roller)
+        roller = roller or GameLogic.roll_dice
+        print(roller, "Line 22")
         print("Welcome to Ten Thousand")
         print("(y)es to play or (n)o to decline")
         play_game = input("> ")
         if play_game == "n":
             self.quit_game(play_game, self.banker.balance, self.round)
         elif play_game == "y":
-            self.start_game()
+            self.start_game(roller)
 
     def quit_game(self, quit_type, points, dice):
         """Quit the game method
@@ -35,15 +37,15 @@ class Game:
         else:
             print(f"Thanks for playing. You earned {points} points")
 
-    def start_game(self):
+    def start_game(self, roller):
         """start the game with the current starting round and dice
         """
         num_dice = 6
         self.round = self.round + 1
         print(f'Starting round {self.round}')
-        self.start_round(num_dice)
+        self.start_round(num_dice, roller)
 
-    def start_round(self, num_dice):
+    def start_round(self, num_dice, roller):
         """start a round 
 
         Args:
@@ -55,32 +57,30 @@ class Game:
         print(f'Rolling {num_dice} dice...')
         # change the tring to the concatenation string with the for loop
         # string = '*** 4 4 5 2 3 1 ***'
-        list = ' '.join(str(dice) for dice in self.roller(num_dice))
-        print(f"*** {list} ***")
+        list1 = ' '.join(str(dice) for dice in roller(num_dice))
+        # list1 = '*** 4 4 5 2 3 1 ***'
+        print(f'*** {list1} ***')
         print("Enter dice to keep, or (q)uit:")
         roll_dice = input("> ")
 
-        if int(roll_dice):
-            dice_saved = len(roll_dice)
-            self.shelf_round(num_dice - dice_saved)
-
-        else:
+        if not int(roll_dice):
             if roll_dice == "q":
                 self.quit_game(roll_dice, self.banker.balance, self.round)
             else:
                 self.end_round()
+        else:
 
+            dice_saved = len(roll_dice)
+            roll_dice = str(roller(num_dice))
+            self.shelf_round(num_dice - dice_saved, roller)
 
+    def shelf_round(self, num_dice, roller):
 
-    def shelf_round(self,num_dice):
+        shelf_banker = roller(num_dice)
+
+        self.banker.shelf(shelf_banker)
+
         print(f"You have {self.banker.shelved} unbanked points and {num_dice} dice remaining")
-
-
-# Convert roll_dice_input to list or tuple of integer(s)
-# Count items in list or tuple
-# subtract count from num_dice
-
-
 
     def end_round(self):
         self.banker.bank()
@@ -89,4 +89,5 @@ class Game:
 
 if __name__ == '__main__':
     game = Game()
-    game.start_round()
+    game.play()
+

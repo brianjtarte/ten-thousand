@@ -10,7 +10,8 @@ class GameLogic:
         pass
 
     @staticmethod
-    def roll_dice(num_dice):
+    def roll_dice(num_dice=6):
+
         roll = tuple(random.randint(1, 6) for die in range(0, num_dice))
 
         return roll
@@ -70,9 +71,6 @@ class GameLogic:
                     score = 1200
 
         return score
-
-
-
 
 
 if __name__ == '__main__':
