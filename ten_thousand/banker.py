@@ -6,6 +6,7 @@ class Banker:
         self.balance = balance
         self.shelved = shelved
 
+
     def clear_shelf(self):
         self.shelved = 0
 
@@ -16,7 +17,9 @@ class Banker:
         return amt_deposited
 
     def shelf(self, amt):
+
         self.shelved += amt
+
 
 
 
