@@ -1,7 +1,6 @@
 from ten_thousand.game_logic import GameLogic
 from ten_thousand.banker import Banker
 
-
 class Game:
     """hadles all the game logic, starts a round, rolls dice, ends a round, banks score, calculates shelf points
     """
@@ -60,18 +59,26 @@ class Game:
         print(f"*** {list} ***")
         print("Enter dice to keep, or (q)uit:")
         roll_dice = input("> ")
-        if roll_dice == "q":
-            self.quit_game(roll_dice, self.banker.balance, self.round)
-        if roll_dice is int:
-            self.shelf_round(num_dice)
+
+        if int(roll_dice):
+            dice_saved = len(roll_dice)
+            self.shelf_round(num_dice - dice_saved)
+
         else:
-            self.end_round()
+            if roll_dice == "q":
+                self.quit_game(roll_dice, self.banker.balance, self.round)
+            else:
+                self.end_round()
+
 
 
     def shelf_round(self,num_dice):
         print(f"You have {self.banker.shelved} unbanked points and {num_dice} dice remaining")
 
 
+# Convert roll_dice_input to list or tuple of integer(s)
+# Count items in list or tuple
+# subtract count from num_dice
 
 
 
