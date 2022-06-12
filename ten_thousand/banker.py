@@ -6,6 +6,7 @@ class Banker:
         self.balance = balance
         self.shelved = shelved
 
+
     def clear_shelf(self):
         self.shelved = 0
 
@@ -16,11 +17,15 @@ class Banker:
         return amt_deposited
 
     def shelf(self, amt):
+
         self.shelved += amt
 
 
 
 
 
-if __name__ == '__main__':
-    pass
+
+# if __name__ == '__main__':
+    # banker=Banker()
+    # banker.shelf(50)
+    # print(banker.shelved)
