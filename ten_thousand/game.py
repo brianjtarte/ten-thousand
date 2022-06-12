@@ -56,34 +56,45 @@ class Game:
         """
         # initialize an empty string
         print(f'Rolling {num_dice} dice...')
-        # change the tring to the concatenation string with the for loop
-        # string = '*** 4 4 5 2 3 1 ***'
         list1 = ' '.join(str(dice) for dice in roller(num_dice))
-        # list1 = '*** 4 4 5 2 3 1 ***'
         print(f'*** {list1} ***')
         print("Enter dice to keep, or (q)uit:")
-        roll_dice = input("> ")
+        saved_dice = input("> ")
+        self.user_choice(saved_dice, num_dice)
 
-        if roll_dice == "q":
-            self.quit_game(roll_dice, self.banker.balance)
-        elif roll_dice == "b":
+
+    def user_choice(self, saved_dice, num_dice):
+        if saved_dice == "q":
+            self.quit_game(saved_dice, self.banker.balance)
+        elif saved_dice == "b":
             self.end_round()
-        elif roll_dice == "r":
+        elif saved_dice == "r":
             pass
 
         else:
+            saved_dice_list = tuple(map(int,saved_dice))
+            # saved_dice_list = [int(i) for i in saved_dice]
+            dice_saved = len(saved_dice_list)
+#            print("dice saved: ", dice_saved, " saved: ", saved_dice_list)
+#            roll_dice = str(roller(num_dice))
+#            self.shelf_round(num_dice - dice_saved, roller)
+            self.shelf_round(GameLogic.calculate_score(saved_dice_list),
+                             dice_saved, num_dice)
 
-            dice_saved = len(roll_dice)
-            roll_dice = str(roller(num_dice))
-            self.shelf_round(num_dice - dice_saved, roller)
+    def shelf_round(self, points, dice_saved, num_dice):
+        print(f"You have {points} unbanked points and "
+              f"{num_dice - dice_saved} dice remaining")
+        print("(r)oll again, (b)ank your points or (q)uit:")
+        #saved_dice refers to user_response
+        saved_dice = input("> ")
+        self.user_choice(saved_dice,self.roller(num_dice),num_dice)
 
-    def shelf_round(self, num_dice, roller):
 
-        shelf_banker = roller(num_dice)
+    def bank_points(self, points):
+        self.banker.bank()
+        print(f"You banked {points} points in round {self.round}")
+        print(f"Total score is {self.banker.balance} points")
 
-        self.banker.shelf(shelf_banker)
-
-        print(f"You have {self.banker.shelved} unbanked points and {num_dice} dice remaining")
 
     def end_round(self):
         self.banker.bank()
