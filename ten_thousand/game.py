@@ -18,18 +18,19 @@ class Game:
             roller (method/function, optional): the function or game logic that handles the dice rolling feature. Defaults to None.
             amt
         """
-        print(roller)
         roller = roller or GameLogic.roll_dice
-        print(roller, "Line 22")
+        # print(roller, "Line 22")
         print("Welcome to Ten Thousand")
         print("(y)es to play or (n)o to decline")
         play_game = input("> ")
         if play_game == "n":
-            self.quit_game(play_game, self.banker.balance, self.round)
+            # self.quit_game(play_game, self.banker.balance, self.round)
+            self.quit_game(play_game)
         elif play_game == "y":
             self.start_game(roller)
 
-    def quit_game(self, quit_type, points, dice):
+    @staticmethod
+    def quit_game(quit_type, points=0):
         """Quit the game method
         """
         if quit_type == 'n':
@@ -63,11 +64,13 @@ class Game:
         print("Enter dice to keep, or (q)uit:")
         roll_dice = input("> ")
 
-        if not int(roll_dice):
-            if roll_dice == "q":
-                self.quit_game(roll_dice, self.banker.balance, self.round)
-            else:
-                self.end_round()
+        if roll_dice == "q":
+            self.quit_game(roll_dice, self.banker.balance)
+        elif roll_dice == "b":
+            self.end_round()
+        elif roll_dice == "r":
+            pass
+
         else:
 
             dice_saved = len(roll_dice)
