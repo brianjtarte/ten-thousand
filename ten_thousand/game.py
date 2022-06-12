@@ -57,6 +57,7 @@ class Game:
         """
 
         print(f'Rolling {num_dice} dice...')
+
         # dice_roll = ' '.join(str(dice) for dice in roller(num_dice))
         roll = roller(num_dice)
         dice_roll = ''

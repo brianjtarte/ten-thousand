@@ -69,6 +69,13 @@ class GameLogic:
 
         return score
 
+    def print_dice(self, roll):
+        string = ""
+        for dice in roll:
+            string += f"{str(dice)}"
+            string += ""
+        return string
+
 
 if __name__ == '__main__':
     # print(GameLogic.calculate_score(GameLogic.roll_dice(5)))

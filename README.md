@@ -4,7 +4,7 @@
 
 ### Links & Resources:
 [Farkle example](http://www.playonlinedicegames.com/farkle)
-
+[Python| Converting all strings in list to integers](https://www.geeksforgeeks.org/python-converting-all-strings-in-list-to-integers/)
 
 
 ### Feature Tasks: Ten Thousand 1
@@ -42,6 +42,18 @@
             - [] 1. Application should keep track of current round
             - [] 2. Have automated Tests to ensure proper operation
 
+### Feature Tasks: Ten Thousand 3
+1. Focus Added Features 
+   1. Implement features from Lab I and Lab II
+     - [x] 1. should handle setting aside scoring dice and continue turn 
+              with remaining dice
+     - [] 2. should handle when cheating occurs or checks for typos
+   2. Should allow user to:
+      - [] 1. continue rolling with 6 new dice when all dice 
+         have scored with HOT DICE
+   3. Should handle ZILCH
+     - [] 1. No points for round and round is over
+
 
 ### Initialize/Run Application:
 
@@ -55,3 +67,11 @@
  
  - Tests of note: N/A
  - Tests not completed/skipped: We only have the first two tests passing at the moment, and are struggling to bank points, which is causing the subsequent tests to fail.
+
+### Other Notes:
+1. Technical difficulties again prevented equal driving among all team 
+   members. (06/11/22)
+2. Long periods trying to troubleshoot with TAs and Instructor that brought 
+   us back to where we were on 6/9/22. (6/11/22)
+3. Managed to get a bit further along on Lab II, but still not able to pass 
+   the "bank_one_roll_then_quit" test. (06/11/22)
