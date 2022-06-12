@@ -27,7 +27,7 @@ def test_single_bank():
         print(e)
     assert not diffs, diffs
 
-@pytest.mark.skip("pending")
+# @pytest.mark.skip("pending")
 def test_bank_first_for_two_rounds():
     game = Game()
     diffs = diff(

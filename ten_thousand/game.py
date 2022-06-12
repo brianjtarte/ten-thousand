@@ -95,8 +95,8 @@ class Game:
 
 
     def end_round(self,roller):
+        print(f"You banked {self.banker.shelved} points in round {self.round}")
         self.banker.bank()
-        print(f"You banked {self.banker.balance} points in round {self.round}")
         print(f"Total score is {self.banker.balance} points")
         self.start_game(roller)
 
