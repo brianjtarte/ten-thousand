@@ -25,7 +25,7 @@ class Banker:
 
 
 
-if __name__ == '__main__':
-    banker=Banker()
-    banker.shelf(50)
-    print(banker.shelved)
+# if __name__ == '__main__':
+    # banker=Banker()
+    # banker.shelf(50)
+    # print(banker.shelved)

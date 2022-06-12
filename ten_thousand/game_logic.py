@@ -21,20 +21,18 @@ class GameLogic:
         score = 0
         count_pair = 0
         count = Counter(roll).most_common()
-        print(count)
 
         num = len(count)
 
         for num in range(0, len(count)):
-            print(count[num][0], count[num][1])
             #  ones
             if count[num][0] == 1 and count[num][1] <= 2:
                 score += 100 * count[num][1]
-                print(score)
+                
 
             if count[num][0] == 1 and count[num][1] > 2:
                 score += 1000 * (count[num][1] - 2)
-                print(score)
+                
             # twos
             if count[num][0] == 2 and count[num][1] >= 3:
                 score += 200 * (count[num][1] - 2)
@@ -47,14 +45,13 @@ class GameLogic:
             # fives
             if count[num][0] == 5 and count[num][1] <= 2:
                 score += 50 * count[num][1]
-                print(score)
 
             if count[num][0] == 5 and count[num][1] > 2:
                 score += 500 * (count[num][1] - 2)
-                print(score)
             # sixes
             if count[num][0] == 6 and count[num][1] >= 3:
                 score += 600 * (count[num][1] - 2)
+
             # three pair
             if len(count) == 3:
                 if count[0][1] == 2 and count[1][1] == 2 and count[2][1] == 2:
@@ -73,6 +70,6 @@ class GameLogic:
         return score
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # print(GameLogic.calculate_score(GameLogic.roll_dice(5)))
-    print(GameLogic.calculate_score([1, 2, 3, 5, 4, 6]))
+    # print(GameLogic.calculate_score([1, 2, 3, 5, 4, 6]))
