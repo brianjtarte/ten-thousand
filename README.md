@@ -34,13 +34,13 @@
       1. Methods:
          1. roll_dice (static)
             - [x] 1. should simulate rolling between 1 and 6 dice
-            - [] 2. Should allow user to set aside dice each roll
+            - [x] 2. Should allow user to set aside dice each roll
          2. calculate_score (static)
-            - [] 1. Application Should allow banking of current score or allow rolling again
-            - [] 2. Application Should keep track of total score
+            - [x] 1. Application Should allow banking of current score or allow rolling again
+            - [x] 2. Application Should keep track of total score
          3. Misc Features:
-            - [] 1. Application should keep track of current round
-            - [] 2. Have automated Tests to ensure proper operation
+            - [x] 1. Application should keep track of current round
+            - [x] 2. Have automated Tests to ensure proper operation
 
 ### Feature Tasks: Ten Thousand 3
 1. Focus Added Features 
@@ -59,6 +59,8 @@
 
 6/9/2022
 - Not Applicable, no full game implementation, only dice rolling. 
+6/11/2022
+- Running game.py (python -m ten_thousand.game) allows the user to follow prompts to start a game, roll dice, shelve points, bank points, and quit the game with a total score.
 
 ### Tests
  - Running tests: 
@@ -75,3 +77,8 @@
    us back to where we were on 6/9/22. (6/11/22)
 3. Managed to get a bit further along on Lab II, but still not able to pass 
    the "bank_one_roll_then_quit" test. (06/11/22)
+### Bug Fixes:
+6/11/22
+1. Cleaned up script files to remove excessive print statements that were breaking our tests
+2. Passed down roller so the mock tests would run appropriately
+3. Fixed merge conflicts
