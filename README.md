@@ -54,6 +54,14 @@
    3. Should handle ZILCH
      - [] 1. No points for round and round is over
 
+### Feature Tasks: Ten Thousand 4
+1. Create an AI Bot to play Ten Thousand
+   - The only method available for use from Game class is play.
+   - All static methods of GameLogic class are available.
+   - All other interactions with game can take place ONLY via the I/O features of the game.
+      - In other words, via injectable print and input functionality.
+      - It is FORBIDDEN to inject a custom roller function into Game class.
+
 
 ### Initialize/Run Application:
 
@@ -77,6 +85,8 @@
    us back to where we were on 6/9/22. (6/11/22)
 3. Managed to get a bit further along on Lab II, but still not able to pass 
    the "bank_one_roll_then_quit" test. (06/11/22)
+4. 6/16/2022
+   - our bot doesnt actually perform any logic, it does get the rolls we want to save at their indexes, we just havent gotton it to do anything.
 ### Bug Fixes:
 6/11/22
 1. Cleaned up script files to remove excessive print statements that were breaking our tests
