@@ -66,7 +66,7 @@ class Game:
         dice_roll = ''
         for num in roll:
             dice_roll += str(num) + ' '
-        print(f'*** {dice_roll} ***')
+        print(f'*** {dice_roll}***')
         print("Enter dice to keep, or (q)uit:")
 
         keep_or_quit = input("> ")
