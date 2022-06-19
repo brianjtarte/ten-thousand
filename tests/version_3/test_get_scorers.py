@@ -16,7 +16,7 @@ pytestmark = [pytest.mark.version_3]
         ((2, 3, 4), tuple()),
     ],
 )
-@pytest.mark.skip(reason=None)
+# @pytest.mark.skip(reason=None)
 def test_get_scorers(test_input, expected):
     actual = GameLogic.get_scorers(test_input)
     assert sorted(actual) == sorted(expected)
