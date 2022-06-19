@@ -72,15 +72,17 @@ class Game:
 
         if keep_or_quit == "q":
             self.quit_game(keep_or_quit, self.banker.balance)
-        elif keep_or_quit == "b":
-            self.end_round(roller)
 
         else:
             saved_dice_list = [int(i) for i in keep_or_quit]
             dice_saved = len(saved_dice_list)
 
             score = GameLogic.calculate_score(saved_dice_list)
-            self.shelf_round(score, dice_saved, num_dice, roller)
+            if dice_saved == 6:
+                self.banker.shelf(score)
+                self.start_round(num_dice, roller)
+            else:
+                self.shelf_round(score, dice_saved, num_dice, roller)
             
     def shelf_round(self, points, dice_saved, num_dice, roller):
         self.banker.shelf(points)
