@@ -1,6 +1,7 @@
-from ten_thousand.game_logic import GameLogic
-from ten_thousand.banker import Banker
 import sys
+from ten_thousand.banker import Banker
+from ten_thousand.game_logic import GameLogic
+from collections import Counter
 
 
 class Game:
@@ -69,13 +70,18 @@ class Game:
         print("Enter dice to keep, or (q)uit:")
 
         keep_or_quit = input("> ")
+        dice_roll_list = Counter(dice_roll)
+        # input_cheat_check = Counter(keep_or_quit)
+        # print(input_cheat_check)
+        # print(dice_roll_list)
+        # for num in dice_roll_list:
+        #     print(num)
+        # for num in list(keep_or_quit):
+        #     dice_list_check = dice_roll_list[num]
+        #     print(dice_list_check)
 
         if keep_or_quit == "q":
             self.quit_game(keep_or_quit, self.banker.balance)
-        elif keep_or_quit == "b":
-            self.end_round(roller)
-        elif keep_or_quit == "r":
-            pass
 
         else:
             saved_dice_list = [int(i) for i in keep_or_quit]
@@ -83,15 +89,19 @@ class Game:
 
             score = GameLogic.calculate_score(saved_dice_list)
             self.shelf_round(score, dice_saved, num_dice, roller)
-            
+
     def shelf_round(self, points, dice_saved, num_dice, roller):
         self.banker.shelf(points)
-        print(f"You have {points} unbanked points and {num_dice-dice_saved} "
+        print(f"You have {self.banker.shelved} unbanked points and {num_dice - dice_saved} "
               f"dice remaining")
         print("(r)oll again, (b)ank your points or (q)uit:")
         roll_bank_quit = input("> ")
+        if num_dice - dice_saved == 0:
+            self.start_round(num_dice, roller)
         if roll_bank_quit == "b":
             self.end_round(roller)
+        elif roll_bank_quit == 'r':
+            self.start_round(num_dice - dice_saved, roller)
 
     def end_round(self, roller):
         print(f"You banked {self.banker.shelved} points in round {self.round}")
