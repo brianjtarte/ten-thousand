@@ -78,23 +78,20 @@ class Game:
             dice_saved = len(saved_dice_list)
 
             score = GameLogic.calculate_score(saved_dice_list)
-            if dice_saved == 6:
-                self.banker.shelf(score)
-                self.start_round(num_dice, roller)
-            else:
-                self.shelf_round(score, dice_saved, num_dice, roller)
-            
+            self.shelf_round(score, dice_saved, num_dice, roller)
+
     def shelf_round(self, points, dice_saved, num_dice, roller):
         self.banker.shelf(points)
-        print(f"You have {self.banker.shelved} unbanked points and {num_dice-dice_saved} "
+        print(f"You have {self.banker.shelved} unbanked points and {num_dice - dice_saved} "
               f"dice remaining")
         print("(r)oll again, (b)ank your points or (q)uit:")
         roll_bank_quit = input("> ")
+        if num_dice - dice_saved == 0:
+            self.start_round(num_dice, roller)
         if roll_bank_quit == "b":
             self.end_round(roller)
         elif roll_bank_quit == 'r':
-            self.start_round(num_dice-dice_saved, roller)
-
+            self.start_round(num_dice - dice_saved, roller)
 
     def end_round(self, roller):
         print(f"You banked {self.banker.shelved} points in round {self.round}")
