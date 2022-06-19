@@ -51,7 +51,6 @@ class Game:
         self.start_round(self.dice_qty, roller)
 
     def start_round(self, num_dice, roller):
-        print(num_dice)
         """start a round 
 
         Args:
