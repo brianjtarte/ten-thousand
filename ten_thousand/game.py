@@ -1,6 +1,7 @@
-from ten_thousand.game_logic import GameLogic
-from ten_thousand.banker import Banker
 import sys
+from ten_thousand.banker import Banker
+from ten_thousand.game_logic import GameLogic
+from collections import Counter
 
 
 class Game:
@@ -65,10 +66,19 @@ class Game:
         dice_roll = ''
         for num in roll:
             dice_roll += str(num) + ' '
-        print(f'*** {dice_roll}***')
+        print(f'*** {dice_roll} ***')
         print("Enter dice to keep, or (q)uit:")
 
         keep_or_quit = input("> ")
+        dice_roll_list = Counter(dice_roll)
+        # input_cheat_check = Counter(keep_or_quit)
+        # print(input_cheat_check)
+        # print(dice_roll_list)
+        # for num in dice_roll_list:
+        #     print(num)
+        # for num in list(keep_or_quit):
+        #     dice_list_check = dice_roll_list[num]
+        #     print(dice_list_check)
 
         if keep_or_quit == "q":
             self.quit_game(keep_or_quit, self.banker.balance)

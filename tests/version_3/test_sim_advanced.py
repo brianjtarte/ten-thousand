@@ -22,7 +22,7 @@ def test_hot_dice():
     assert not diffs, diffs
 
 
-@pytest.mark.skip(reason=None)
+# @pytest.mark.skip(reason=None)
 def test_cheat_and_fix():
     """Cheating (or typos) should not be allowed.
     Therefore the user's input must be validated
