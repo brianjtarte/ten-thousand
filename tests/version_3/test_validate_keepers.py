@@ -1,7 +1,7 @@
 import pytest
 from ten_thousand.game_logic import GameLogic
 
-pytestmark = [pytest.mark.version_3]
+# pytestmark = [pytest.mark.version_3]
 
 @pytest.mark.skip(reason=None)
 def test_validate_legal_keepers():

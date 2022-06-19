@@ -51,6 +51,7 @@ class Game:
         self.start_round(self.dice_qty, roller)
 
     def start_round(self, num_dice, roller):
+        print(num_dice)
         """start a round 
 
         Args:
@@ -74,8 +75,6 @@ class Game:
             self.quit_game(keep_or_quit, self.banker.balance)
         elif keep_or_quit == "b":
             self.end_round(roller)
-        elif keep_or_quit == "r":
-            pass
 
         else:
             saved_dice_list = [int(i) for i in keep_or_quit]
@@ -86,12 +85,15 @@ class Game:
             
     def shelf_round(self, points, dice_saved, num_dice, roller):
         self.banker.shelf(points)
-        print(f"You have {points} unbanked points and {num_dice-dice_saved} "
+        print(f"You have {self.banker.shelved} unbanked points and {num_dice-dice_saved} "
               f"dice remaining")
         print("(r)oll again, (b)ank your points or (q)uit:")
         roll_bank_quit = input("> ")
         if roll_bank_quit == "b":
             self.end_round(roller)
+        elif roll_bank_quit == 'r':
+            self.start_round(num_dice-dice_saved, roller)
+
 
     def end_round(self, roller):
         print(f"You banked {self.banker.shelved} points in round {self.round}")
